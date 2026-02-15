@@ -98,6 +98,15 @@ button {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
+.qr-code {
+    width: 200px; /* Saiz gambar */
+    height: auto;
+    border: 5px solid #f8f9fa; /* Frame putih sekeliling QR */
+    border-radius: 20px; /* Bucu gambar jadi bulat */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Efek bayang-bayang lembut */
+    margin: 20px 0;
+}
+
 textarea {
     border: 2px solid #e5e7eb;
     border-radius: 12px;
