@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DuitRaya</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <div class="container" id="mainBox">
+        <div id="soalanContent">
+            <h1> SELAMAT HARI RAYA 🌙</h1>
+            <p>aaa.. Nak duit raya tak?</p>
+            <div class="btn-wrapper" id="wrapper">
+                <button id="btnNak" onclick="tunjukQR()">Nak</button>
+                <button id="btnTaknak" onmouseover="lari()" onclick="lari()">Taknak</button>
+            </div>
+        </div>
+
+        <div id="qrSection">
+            <h2>Dah besar pun nak duit raya?gurau je</h2>
+            <p>Scan QR ni cepat sebelum aku tukar fikiran!</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=Contoh" class="qr-code">
+            <p style="font-size: 14px;">Ada nak cakap apa-apa? <br>nak jemput datang rumah ke?hehe</p>
+            <textarea id="pesanan" rows="3" placeholder="Tulis kat sini..."></textarea>
+            <button id="waBtn" onclick="hantarWhatsApp()">Send to WhatsApp ➔</button>
+        </div>
+    </div>
+
+    <script>
+        const teksLoop = ["Betul ni?", "Seres ni?", "Yakin ke?", "Taknak ke?", "Try la klik", "Sikit lagi!", "Aip aip!"];
+        let indexTeks = 0;
+        let dahMulaLari = false;
+
+        function lari() {
+            const btn = document.getElementById('btnTaknak');
+            
+            // 1. Kali pertama trigger, kita set position jadi 'fixed' supaya dia boleh lari satu screen
+            if (!dahMulaLari) {
+                btn.style.position = 'fixed';
+                dahMulaLari = true;
+            }
+
+            // 2. Tukar teks secara looping
+            btn.innerText = teksLoop[indexTeks];
+            indexTeks = (indexTeks + 1) % teksLoop.length;
+
+            // 3. Kira kedudukan random (tapi jangan rapat sangat dengan tepi screen)
+            const margin = 100;
+            const x = Math.random() * (window.innerWidth - btn.clientWidth - margin) + (margin/2);
+            const y = Math.random() * (window.innerHeight - btn.clientHeight - margin) + (margin/2);
+
+            // 4. Set posisi baru
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function tunjukQR() {
+            // Hilangkan butang taknak kalau dia tengah lari kat tempat lain
+            document.getElementById('btnTaknak').style.display = 'none';
+            
+            document.getElementById('soalanContent').style.display = 'none';
+            const qr = document.getElementById('qrSection');
+            qr.style.display = 'block';
+            setTimeout(() => { qr.style.opacity = '1'; }, 50);
+        }
+
+        function hantarWhatsApp() {
+            const noTel = "60179584720"; // GANTI NO KAU KAT SINI (Mula dengan 60)
+            const mesej = document.getElementById('pesanan').value;
+            const link = `https://wa.me/${noTel}?text=${encodeURIComponent(mesej)}`;
+            
+            if(mesej.trim() === "") {
+                alert("tulis la sikit :v ");
+            } else {
+                window.open(link, '_blank');
+            }
+        }
+    </script>
+</body>
+</html>

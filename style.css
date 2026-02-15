@@ -1,0 +1,110 @@
+/* style.css */
+:root {
+    --primary: #064e3b; /* Hijau Emerald */
+    --accent: #fbbf24;  /* Emas */
+    --bg: #f0fdf4;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(6, 78, 59, 0.15);
+    text-align: center;
+    width: 350px;
+    border: 2px solid var(--primary);
+    position: relative;
+    z-index: 10;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+}
+
+h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+p {
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.btn-wrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    height: 60px;
+    align-items: center;
+}
+
+button {
+    padding: 14px 30px;
+    border-radius: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#btnNak {
+    background: linear-gradient(135deg, #065f46, #047857);
+    color: white;
+    box-shadow: 0 4px 15px rgba(4, 120, 87, 0.4);
+}
+
+#btnNak:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(4, 120, 87, 0.6);
+}
+
+#btnTaknak {
+    background: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+/* Animasi untuk QR Section */
+#qrSection {
+    display: none; /* Ini akan sorokkan bahagian QR masa mula-mula buka */
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+}
+
+#qrSection img {
+    border-radius: 15px;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+textarea {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
